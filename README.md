@@ -1,2 +1,2 @@
-# thinknetika_js
+# thinknetica_js
 Thinknetica course JS
