@@ -33,36 +33,3 @@ let sumOfPositive = (numbersArray) => {
 }
 
 console.log(sumOfPositive(numbersArray))
-
-// let validateArray = (numbersArray) => {
-//   if (Array.isArray(numbersArray)) {
-//     for (let i = 0; i < numbersArray.length; i++) {
-//       if (numbersArray[i] == NaN || numbersArray.length == 0) {
-//         console.log(numbersArray[i])
-//         // return false
-//       } else {
-//         // return true
-//       }
-//     }
-//   }
-// }
-
-
-
-// let sumOfPositive = (numbersArray) => {
-//   let counter = 0
-//   let sum = 0
-
-//   for (let i = 0; i < numbersArray.length; i++) {
-//     if (numbersArray[i] >= 0) {
-//       sum = sum + numbersArray[i]
-//       counter++
-//     }
-//   }
-//   return {count: counter, sum: sum}
-// }
-
-// console.log(validateArray(numbersArray))
-
-// if (validateArray(numbersArray))
-//   console.log(sumOfPositive(numbersArray))
