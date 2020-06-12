@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>events</title>
+    <style>
+        table {
+            display: block;
+            margin: 20px 20px 0;
+            /* max-width: 200px; */
+        }
+
+        table tr td {
+            width: 20px;
+            height: 20px;
+            border: 1px solid gray;
+        }
+        #red {background-color: red;}
+        #green {background-color: green;}
+        #blue {background-color: blue;}
+        #yellow {background-color: yellow;}
+        #darkblue {background-color: darkblue;}
+        #white {background-color: white;}
+        #tablet {
+            float: left;
+        }
+        p {
+            margin-left: 0;
+        }
+
+        #colors {
+            margin-left: 0;
+        }
+    </style>
+</head>
+
+<body>
+<h1>Создать рабочую область</h1>
+<p>Для этого введите цифровые значения в ячейку и нажмите кнопку "Create"</p>
+<form id="cellcount">
+    <input name="sizewidth" placeholder="Please enter count of cells by width"><br>
+    <input name="sizeheight" placeholder="Please enter count of cells by height"><br>
+    <button id="submit" type="submit">Create</button>
+</form>
+
+<table id="tablet" cellspacing="0" cellpadding="0">
+</table>
+<table id="colors">
+    <tr>
+        <td id="red" data-value='red'></td>
+        <td id="green" data-value='green'></td>
+        <td id="blue" data-value='blue'></td>
+    </tr>
+    <tr>
+        <td id="yellow" data-value='yellow'></td>
+        <td id="darkblue" data-value='darkblue'></td>
+        <td id="white" data-value='white'></td>
+    </tr>
+</table>
+
+
+<script>
+    function setCellsToTable(tr, td) {
+        const table = document.getElementById('tablet')
+        for (let i = 0; i < tr; i++) {
+            const newtr = document.createElement('tr')
+            table.append(newtr)
+            for (let g = 0; g < td; g++) {
+                const newtd = document.createElement('td')
+                newtr.append(newtd)
+            }
+        }
+    }
+
+    let inputH = 0
+    let inputV = 0
+
+    const btn = document.getElementById('submit')
+    btn.addEventListener('click', getSize)
+
+    function getSize(event) {
+        event.preventDefault()
+        inputH = document.getElementsByTagName('input')[0].value
+        inputV = document.getElementsByTagName('input')[1].value
+        console.log(inputH, inputV)
+        setCellsToTable(inputV, inputH)
+        btn.style.pointerEvents = 'none'
+    }
+
+    const palette = document.getElementById('colors')
+    palette.addEventListener('click', getColor)
+
+    let color = 'tomato'
+
+    function getColor(event) {
+        // color = palette.target.value
+        color = event.target.dataset.value
+        // console.log(color)
+        // console.log(event)
+    }
+
+
+    
+
+    'use strict';
+    const table = document.getElementsByTagName('table')[0];
+    // Пожалуйста, подскажите событие, при котором можно зажать левую кнопку мыши
+    // и перемещать по ячейкам, чтобы они закрашивались. Аналог mouseover, только с зажатой ЛКМ
+    table.addEventListener('mouseover', click);
+
+    /**
+     * @param {MouseEvent} event
+     */
+    function click(event) {
+        console.log(event.type, event.target);
+
+        if (event.target.tagName !== 'TD')
+            return;
+
+
+        if (event.shiftKey)
+            event.target.style.backgroundColor = 'transparent';
+        else
+            event.target.style.backgroundColor = color;
+
+        // console.log(this);
+        // console.log(event.offsetX, event.offsetY)
+        console.log(event.target.dataset.code);
+    }
+</script>
+</body>
+
+</html>
