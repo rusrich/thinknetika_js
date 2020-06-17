@@ -46,7 +46,18 @@ function Ship(name) {
     this.setName = function (name) {
     }
     this.move = function (direction) {
-        
+        if (direction == 'n' && this.position.x > this.positionsArray[this.positionsArray.length - 2].x) {
+            return 'Moved to North'
+        }
+        if (direction == 's' && this.position.x < this.positionsArray[this.positionsArray.length - 2].x) {
+            return 'Moved to South'
+        }
+        if (direction == 'e' && this.position.y > this.positionsArray[this.positionsArray.length - 2].y) {
+            return 'Moved to East'
+        }
+        if (direction == 'w' && this.position.x < this.positionsArray[this.positionsArray.length - 2].y) {
+            return 'Moved to West'
+        }
     };
     this.isAnchorDroped = function () {
         // console.log('isAnchorDroped', this);
@@ -80,6 +91,10 @@ console.log(ship.setDistance());
 console.log(ship.isAnchorDroped());
 // ship.speed = 10
 console.log(ship.speed);
+console.log(ship.move('n'));
+console.log(ship.move('e'));
+console.log(ship.move('w'));
+console.log(ship.move('s'));
 
 
 
